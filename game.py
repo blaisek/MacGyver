@@ -5,37 +5,53 @@ from pygame.locals import *
 
 
 pygame.init()
-
+window = pygame.display.set_mode((600, 600), RESIZABLE)
 level = Frame('labyrinth')
 level.generate()
 level.display()
-mac = Motion('Macgyver.png')
-pers = pygame.image.load('Macgyver.png')
+MG = Motion(level.structure)
+BG = pygame.image.load("BG.png")
+
+
+def win_lose():
+
+    x = MG.x
+    y = MG.y
+    for line in level.structure:
+
+        for sprite in line:
+            if sprite == 'g':
+                if x == level.x and y == level.y:
+                    print("You win")
 
 
 def gameloop():
 
-    run = 1
+    run = True
 
     while run:
 
+        pygame.time.delay(100)
+        window.blit(MG.direction, (MG.x, MG.y))
         pygame.display.flip()
-        #pygame.Surface.blit(pers,(mac.x,mac.y))
+        window.blit(BG,(MG.x,MG.y))
 
         for event in pygame.event.get():
+
             if event.type == QUIT:
-                run = 0
-            elif event.type == K_RIGHT:
-                mac.move('right')
-            elif event.type == K_LEFT:
-                mac.move('left')
-            elif event.type == K_UP:
-                mac.move('up')
-            elif event.type == K_DOWN:
-                mac.move('down')
+                run = False
+            if event.type == pygame.KEYDOWN:
 
+                if event.key == K_RIGHT:
+                    MG.move('right')
+                elif event.key == K_LEFT:
+                    MG.move('left')
+                elif event.key == K_UP:
+                    MG.move('up')
+                elif event.key == K_DOWN:
+                    MG.move('down')
+            win_lose()
+    pygame.quit()
 
-
-
-
-gameloop()
+if __name__ == "__main__":
+    gameloop()

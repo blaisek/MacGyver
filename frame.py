@@ -2,16 +2,19 @@ import pygame
 from pygame.locals import *
 
 
+class Frame:
 
-class Frame :
-
-    def __init__(self,file):
+    def __init__(self, file):
         self.file = file
-        self.structure = 0
+        self.structure = []
+        self.case_x = 0
+        self.case_y = 0
+        self.x = 0
+        self.y = 0
 
     def generate(self):
 
-        with open(self.file,"r") as file:
+        with open(self.file, "r") as file:
             file_structure = []
             for line in file:
                 nbr_line = []
@@ -24,25 +27,27 @@ class Frame :
     def display(self):
 
         size = 30
-        pers = pygame.image.load("Macgyver.png")
+
         guard = pygame.image.load('guard.png')
         wall = pygame.image.load('wall.png')
-        window = pygame.display.set_mode((500, 480), RESIZABLE)
+        window = pygame.display.set_mode((600, 600), RESIZABLE)
         pygame.display.set_caption("MacGyver")
+
         y_case = 0
         for line in self.structure:
             x_case = 0
             for sprite in line:
-                x = x_case *size
-                y = y_case *size
+                x = x_case * size
+                y = y_case * size
                 if sprite == '#':
-                    window.blit(wall,(x,y))
-                elif sprite == 'M':
-                    window.blit(pers,(x,y))
+                    window.blit(wall, (x, y))
                 elif sprite == 'g':
-                    window.blit(guard,(x,y))
-                x_case +=1
-            y_case +=1
+                    window.blit(guard, (x, y))
+                x_case += 1
+            y_case += 1
+
+
+
 
 
 
