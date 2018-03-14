@@ -28,9 +28,11 @@ class Frame:
 
         size = 30
 
-        guard = pygame.image.load('guard.png')
-        wall = pygame.image.load('wall.png')
+        guard = pygame.image.load('image/guard.png')
+        wall = pygame.image.load('image/wall2.png')
+        background = pygame.image.load("image/background.jpg")
         window = pygame.display.set_mode((600, 600), RESIZABLE)
+        window.blit(background, (0, 0))
         pygame.display.set_caption("MacGyver")
 
         y_case = 0

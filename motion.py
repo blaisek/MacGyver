@@ -6,7 +6,7 @@ class Motion:
 
     def __init__(self, frame):
 
-        self.pic = pygame.image.load('Macgyver.png')
+        self.pic = pygame.image.load('image/Macgyver.png')
         self.case_x = 0
         self.case_y = 0
         self.x = 0
