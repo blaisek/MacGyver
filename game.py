@@ -6,12 +6,12 @@ from pygame.locals import *
 
 pygame.init()
 window = pygame.display.set_mode((600, 600), RESIZABLE)
-level = Frame('labyrinth')
+level = Frame('labyrinth.txt')
 level.generate()
 level.display()
+level.items(window)
 MG = Motion(level.structure)
 BG = pygame.image.load("image/path2.jpg")
-
 #color
 white = (255,255,255)
 

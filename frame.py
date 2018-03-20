@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+import random
 
 
 class Frame:
@@ -11,6 +12,7 @@ class Frame:
         self.case_y = 0
         self.x = 0
         self.y = 0
+        self.size = 30
 
     def generate(self):
 
@@ -26,8 +28,6 @@ class Frame:
 
     def display(self):
 
-        size = 30
-
         guard = pygame.image.load('image/guard.png')
         wall = pygame.image.load('image/wall2.png')
         background = pygame.image.load("image/background.jpg")
@@ -39,14 +39,33 @@ class Frame:
         for line in self.structure:
             x_case = 0
             for sprite in line:
-                x = x_case * size
-                y = y_case * size
+                x = x_case * self.size
+                y = y_case * self.size
                 if sprite == '#':
                     window.blit(wall, (x, y))
                 elif sprite == 'g':
                     window.blit(guard, (x, y))
                 x_case += 1
             y_case += 1
+
+    def items(self, window):
+
+        items = pygame.image.load("image/loot.png")
+        x = random.randrange(15)
+        y = random.randrange(15)
+        rand_x = x * self.size
+        rand_y = y * self.size
+
+        for line in self.structure:
+
+            if self.structure[y][x] != '#' and self.structure[y][x] == '0':
+                
+                    window.blit(items, (rand_x, rand_y))
+
+            else:
+                x = random.randrange(15)
+                y = random.randrange(15)
+
 
 
 
