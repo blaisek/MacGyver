@@ -20,7 +20,7 @@ class Motion:
         if direction == 'right':
             if self.case_x < 14:
                 if self.frame[self.case_y][self.case_x+1] != '#':
-                    self.case_x +=1
+                    self.case_x += 1
                     self.x = self.case_x * size
                 self.direction = self.pic
 

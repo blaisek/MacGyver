@@ -4,7 +4,6 @@ import random
 
 
 class Frame:
-
     def __init__(self, file):
         self.file = file
         self.structure = []
@@ -50,25 +49,20 @@ class Frame:
 
     def items(self, window):
 
-        items = pygame.image.load("image/loot.png")
-        x = random.randrange(15)
-        y = random.randrange(15)
-        rand_x = x * self.size
-        rand_y = y * self.size
+        item = pygame.image.load("image/loot.png")
+        item_list = []
+        i = 0
 
-        for line in self.structure:
+        while i < 3:
+
+            x = random.randrange(15)
+            y = random.randrange(15)
+            rand_x = x * self.size
+            rand_y = y * self.size
 
             if self.structure[y][x] != '#' and self.structure[y][x] == '0':
-                
-                    window.blit(items, (rand_x, rand_y))
+                window.blit(item, (rand_x, rand_y))
+                item_list.append((rand_x, rand_y))
+                i += 1
 
-            else:
-                x = random.randrange(15)
-                y = random.randrange(15)
-
-
-
-
-
-
-
+        return item_list
