@@ -1,5 +1,6 @@
 from frame import *
 from motion import *
+from write import *
 import pygame
 import os
 from pygame.locals import *
@@ -18,31 +19,7 @@ class Init:
     state = [False, False, False]
 
 
-def blit(x, y, image):
-    Init.window.blit(image, (x, y))
-
-
-def createtext(text, Police):
-    # color
-    white = (255, 255, 255)
-    text1 = Police.render(text, True, white)
-    return text1, text1.get_rect()
-
-
-def message(text):
-    GO = pygame.font.Font('BradBunR.ttf', 150)
-    RG = pygame.font.Font('BradBunR.ttf', 50)
-
-    text1, text2 = createtext(text, GO)
-    text2.center = 300, 200
-    Init.window.blit(text1, text2)
-
-    text3, text4 = createtext("play again ? press enter", RG)
-    text4.center = 300, 300
-    Init.window.blit(text3, text4)
-
 def check():
-
     mg_pos = (Init.MG.x, Init.MG.y)
 
     if Init.list[0] == mg_pos:
@@ -72,12 +49,13 @@ def replay():
 
 
 def win_lose():
+    write = Write()
     if Init.level.structure[Init.MG.case_y][Init.MG.case_x] == 'g' and check():
-        message("You Win")
+        write.message("you win")
         replay()
 
     if Init.level.structure[Init.MG.case_y][Init.MG.case_x] == 'g' and not check():
-        message("You lose")
+        write.message("You lose")
         replay()
 
 
@@ -111,4 +89,3 @@ def game_loop():
 
 if __name__ == "__main__":
     game_loop()
-
