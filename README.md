@@ -1,6 +1,6 @@
 # MacGyver
 
-*MacGyver* is a *simple* 2D labyrinth game developped with the *Pygame* package
+*MacGyver* is a *simple* 2D labyrinth game developped with Python 3.5.2 and the *Pygame* package
 (see requirements.txt file).
 
 ## The Game 

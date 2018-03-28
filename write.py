@@ -16,13 +16,13 @@ class Write:
         return text1, text1.get_rect()
 
     def message(self, text):
-        GO = pygame.font.Font('BradBunR.ttf', 150)
-        RG = pygame.font.Font('BradBunR.ttf', 50)
+        GO = pygame.font.Font('BradBunR.ttf', 130)
+        RG = pygame.font.Font('BradBunR.ttf', 40)
 
         text1, text2 = self.createtext(text, GO)
-        text2.center = 300, 200
+        text2.center = 210, 200
         self.window.blit(text1, text2)
 
         text3, text4 = self.createtext("play again ? press enter", RG)
-        text4.center = 300, 300
+        text4.center = 200, 300
         self.window.blit(text3, text4)

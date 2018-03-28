@@ -29,7 +29,7 @@ class Frame:
         guard = pygame.image.load('image/guard.png')
         wall = pygame.image.load('image/wall2.png')
         background = pygame.image.load("image/background.jpg")
-        window = pygame.display.set_mode((550, 550))
+        window = pygame.display.set_mode((450, 500))
         window.blit(background, (0, 0))
         pygame.display.set_caption("MacGyver")
 

@@ -1,14 +1,13 @@
 from frame import *
 from motion import *
 from write import *
-import pygame
 import os
 from pygame.locals import *
 
 
 class Init:
     pygame.init()
-    window = pygame.display.set_mode((400, 400), RESIZABLE)
+    window = pygame.display.set_mode()
     level = Frame('labyrinth.txt')
     level.generate()
     level.display()
@@ -24,15 +23,15 @@ def check():
 
     if Init.list[0] == mg_pos:
         Init.state[0] = True
-        Init.window.blit(Init.item, (200, 515))
+        Init.window.blit(Init.item, (150, 460))
 
     if Init.list[1] == mg_pos:
         Init.state[1] = True
-        Init.window.blit(Init.item, (250, 515))
+        Init.window.blit(Init.item, (200, 460))
 
     if Init.list[2] == mg_pos:
         Init.state[2] = True
-        Init.window.blit(Init.item, (300, 515))
+        Init.window.blit(Init.item, (250, 460))
 
     return Init.state[0] and Init.state[1] and Init.state[2]
 
@@ -55,7 +54,7 @@ def win_lose():
         replay()
 
     if Init.level.structure[Init.MG.case_y][Init.MG.case_x] == 'g' and not check():
-        write.message("You lose")
+        write.message("you lose")
         replay()
 
 
