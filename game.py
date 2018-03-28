@@ -7,7 +7,7 @@ from pygame.locals import *
 
 class Init:
     pygame.init()
-    window = pygame.display.set_mode()
+    window = pygame.display.set_mode((450, 500))
     level = Frame('labyrinth.txt')
     level.generate()
     level.display()
